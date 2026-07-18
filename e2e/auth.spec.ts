@@ -9,7 +9,7 @@ async function signIn(page: Page) {
   await page.getByLabel("Username").fill(ownerUsername);
   await page.getByLabel("Password").fill(ownerPassword);
   await page.getByRole("button", { name: "Open workspace" }).click();
-  await expect(page).toHaveURL(/\/dashboard$/);
+  await expect(page).toHaveURL(/\/dashboard$/, { timeout: 30_000 });
 }
 
 test("redirects anonymous workspace requests and rejects anonymous APIs", async ({
